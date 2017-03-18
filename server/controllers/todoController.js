@@ -43,5 +43,14 @@ module.exports = {
         res.send(data)
       }
     })
+  },
+  readTodo: function(req,res){
+    Todo.findOne({_id:req.params.id}, function(err,data){
+      if(err){
+        res.send(err)
+      }else{
+        res.send(data)
+      }
+    })
   }
 }

@@ -16,15 +16,16 @@
     <table class="table table-striped" >
       <thead>
         <tr>
-          <th>No</th>
           <th>Todo</th>
           <th>Completed</th>
+          <th>update Date</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="data in todos">
           <td>{{data.todo}}</td>
+          <td>{{data.completed}}</td>
           <td>{{data.updateAt}}</td>
           <td>
             <span class="fa fa-trash fa-2x" v-on:click="delete(data.id)" style="margin-right:10px; cursor: pointer;"></span> |
@@ -38,7 +39,7 @@
 
     <form method="post" class="form-inline">
       <div class="form-group">
-        <label for="todo">Todo: </label>
+        <label for="todo">Create Todo: </label>
         <input type="text" class="form-control" name="todo" id="todo">
       </div>
       <button type="submit" class="btn btn-success">Add Todo</button>
