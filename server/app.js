@@ -4,13 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose')
 var index = require('./routes/index');
 var users = require('./routes/users');
 var cors = require('cors')
 
 var app = express();
-
+mongoose.connect('mongodb://localhost/todo', function (err) {
+  if (err) throw err;
+  console.log("connected")
+})
 
 app.use(cors())
 app.use(logger('dev'));
