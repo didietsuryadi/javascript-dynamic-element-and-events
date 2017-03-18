@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/todo', controller.readTodos)
+router.get('/todo/:id', controller.readTodo)
 router.post('/todo', controller.createTodo)
 router.put('/todo', controller.updateTodo)
 router.delete('/todo', controller.deleteTodo)

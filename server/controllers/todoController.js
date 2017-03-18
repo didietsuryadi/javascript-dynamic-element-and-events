@@ -4,7 +4,7 @@ module.exports = {
   createTodo: function(req,res){
     Todo.create({
       todo: req.body.todo,
-      completed: req.body.completed
+      completed: false
     }, function (err, data) {
       if (err) {
         res.send(err)
