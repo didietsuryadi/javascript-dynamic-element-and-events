@@ -15,8 +15,7 @@ module.exports = {
   },
   updateTodo: function(req,res){
     Todo.findOneAndUpdate({_id:req.params.id}, {
-      todo: req.body.todo,
-      completed: req.body.completed,
+      completed: true,
       updateAt: new Date()
     }, {new:true}, function(err, data){
       if (err){

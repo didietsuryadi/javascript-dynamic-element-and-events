@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/todo', controller.readTodos)
 router.get('/todo/:id', controller.readTodo)
 router.post('/todo', controller.createTodo)
-router.put('/todo', controller.updateTodo)
-router.delete('/todo', controller.deleteTodo)
+router.put('/todo/:id', controller.updateTodo)
+router.delete('/todo/:id', controller.deleteTodo)
 
 module.exports = router;

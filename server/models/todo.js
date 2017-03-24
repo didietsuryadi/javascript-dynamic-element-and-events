@@ -7,7 +7,7 @@ var todoSchema = new Schema({
   completed: Boolean
 },
   {
-    timestamp: true
+    timestamps: true
   })
 
 var Todo = mongoose.model('Todo', todoSchema)

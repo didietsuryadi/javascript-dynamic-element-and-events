@@ -6,7 +6,6 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-1.9.1.min.js" integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ=" crossorigin="anonymous"></script>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
@@ -25,11 +24,14 @@
       <tbody>
         <tr v-for="data in todos">
           <td>{{data.todo}}</td>
-          <td>{{data.completed}}</td>
-          <td>{{data.updateAt}}</td>
           <td>
-            <span class="fa fa-trash fa-2x" v-on:click="delete(data.id)" style="margin-right:10px; cursor: pointer;"></span> |
-            <span class="fa fa-edit fa-2x" v-on:click="update(data.id)" style="margin-left:10px; cursor: pointer;"></span>
+            <span v-if="data.completed" class="glyphicon glyphicon-ok"></span>
+            <span v-else class="glyphicon glyphicon-remove"></span>
+          </td>
+          <td>{{data.updatedAt}}</td>
+          <td>
+            <a class="fa fa-trash fa-2x" v-on:click="deleteTodo(data._id)" style="margin-right:10px; cursor: pointer;"></a> |
+            <a class="fa fa-edit fa-2x" v-on:click="update(data._id)" style="margin-left:10px; cursor: pointer;"></a>
           </td>
         </tr>
       </tbody>
@@ -37,12 +39,12 @@
 
     <hr>
 
-    <form method="post" class="form-inline">
+    <form class="form-inline">
       <div class="form-group">
         <label for="todo">Create Todo: </label>
-        <input type="text" class="form-control" name="todo" id="todo">
+        <input type="text" class="form-control" name="todo" v-model="todo">
       </div>
-      <button type="submit" class="btn btn-success">Add Todo</button>
+      <button type="submit" class="btn btn-success" v-on:click="create">Add Todo</button>
     </form>
   </div>
 </body>
